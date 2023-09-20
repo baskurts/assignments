@@ -1,9 +1,12 @@
+from serialsearch import search
+
 def are_strictly_identical(list1, list2):
     if len(list1) != len(list2):
         return False
 
     for i in range(len(list1)):
-        if list1[i] != list2[i]:
+        found_index = search(list2, i, 1, list1[i])
+        if found_index == -1 or found_index != i:
             return False
 
     return True
@@ -25,3 +28,4 @@ if __name__ == '__main__':
 
     for list1, list2 in lists_to_check:
         display_results(list1, list2)
+
