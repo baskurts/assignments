@@ -1,31 +1,17 @@
-from serialsearch import search
+from selectionsort2 import sort
 
-def are_strictly_identical(list1, list2):
-    if len(list1) != len(list2):
-        return False
+names = ['Emma', 'Brian', 'Evelyn', 'Frank', 'Alex', 'Felecia', 'Carl']
+grades = ['A', 'B', 'D', 'C', 'A', 'F', 'B']
 
-    for i in range(len(list1)):
-        found_index = search(list2, i, 1, list1[i])
-        if found_index == -1 or found_index != i:
-            return False
+print("Original:")
+print("Names   Grades")
+for i in range(len(names)):
+    print(f"{names[i]:<8} {grades[i]}") # I used 'f-string' formatting to align names and grades neatly side by side.
 
-    return True
+first = 0  
+sort(names, grades, first)
 
-def display_results(list1, list2):
-    if are_strictly_identical(list1, list2):
-        print("Two lists are strictly identical!")
-    else:
-        print("Two lists aren't strictly identical!")
-    print(f"List 1: {list1}")
-    print(f"List 2: {list2}\n")
-
-if __name__ == '__main__':
-    lists_to_check = [
-        (['E', 'B', 'E', 'F', 'A', 'F'], ['E', 'B', 'E', 'F', 'A', 'F']),
-        (['E', 'B', 'E', 'F', 'A', 'C'], ['E', 'B', 'E', 'F', 'A', 'F']),
-        (['E', 'B', 'E', 'F', 'A', 'F', 'C'], ['E', 'B', 'E', 'F', 'A', 'F'])
-    ]
-
-    for list1, list2 in lists_to_check:
-        display_results(list1, list2)
-
+print("\nSorted:")
+print("Names   Grades")
+for i in range(len(names)):
+    print(f"{names[i]:<8} {grades[i]}")
